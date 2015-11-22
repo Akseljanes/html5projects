@@ -27,8 +27,3 @@ function clearMood(){
     holder = document.getElementById('holder');
     holder.innerHTML = '';
 }
-function clearMood(){
-        document.getElementById("moodForm").reset();
-        holder = document.getElementById('holder');
-        holder.innerHTML = '';
-}
