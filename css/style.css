@@ -2,7 +2,7 @@ body {
     font-family: Arial;
     font-size: 15px;
     line-height: 1.6;
-    background: lightgray;
+    background: #f4f4f4;
 }
 
 li {
@@ -24,7 +24,7 @@ li {
 }
 
 header {
-    background: pink;
+    background: #1f88f4;
     color: white;
     padding: 5px 10px;
     overflow: auto;
@@ -32,7 +32,7 @@ header {
 }
 
 footer {
-    background: pink;
+    background: #1f88f4;
     color: white;
     padding: 5px 10px;
     overflow: auto;
