@@ -1,14 +1,14 @@
-//Set Todo list variable
+//Set todo list variable
 var todoList = JSON.parse(localStorage.getItem('todos'));
 
-$(document).ready(function () {
+$(document).ready(function(){
 //Set counter
     var i = 0;
-    //check for todos
-    if (localStorage.getItem('todos') != null) {
+//Check for todos
+    if(localStorage.getItem('todos') != null){
         //Loop through and output li items
-        $.each(todoList, function (key, value) {
-            $('#todos').prepend('<li id="task-' + i + '"><a id="todo_link" href="#edit" data-todo_name = "' + value.todo_name + '" data-todo_date="' + value.todo_date + '">' + value.todo_name + '</a></li>');
+        $.each(todoList,function(key, value){
+            $('#todos').prepend('<li id="task-'+i+'"><a id="todo_link" href="#edit" data-todo_name ="'+value.todo_name+'" data-todo_date="'+value.todo_date+'">'+value.todo_name+'</a></li>');
             i++;
         });
         //Refresh
@@ -16,19 +16,20 @@ $(document).ready(function () {
     }
 
 //Add Todo
-    $('#add_form').submit(function () {
-        //Get Submited Values
+    $('#add_form').submit(function(){
+        //Get submitted values
         var todo_name = $('#todo_name').val();
         var todo_date = $('#todo_date').val();
-        //Filed Validation
-        if (todo_name == '') {
-            alert('Please fill the todo name');
-        } else if (todo_date == '') {
-            alert('Please add todo date');
+
+        //Simple field validation
+        if(todo_name == ''){
+            alert('Please give the todo a name');
+        } else if(todo_date == ''){
+            alert('Please add a date');
         } else {
             var todos = JSON.parse(localStorage.getItem('todos'));
             //Check todos
-            if (todos == null) {
+            if(todos == null){
                 todos = [];
             }
             //Create array with new todo
@@ -37,7 +38,20 @@ $(document).ready(function () {
                 "todo_date": todo_date
             }
             todos.push(new_todo);
-            localStorage.setItem('todos', JSON.stringify(todos));
+            localStorage.setItem('todos',JSON.stringify(todos));
         }
     });
+
+
+    $('#todos').on('click','#todo_link',function(){
+        localStorage.setItem('currentTodoName',$(this).data('todo_name'));
+        localStorage.setItem('currentTodoDate',$(this).data('todo_date'));
+    });
+
+    //Clear Todos
+    $('#clear_btn').click(function(){
+        localStorage.clear();
+    });
+
+
 });
